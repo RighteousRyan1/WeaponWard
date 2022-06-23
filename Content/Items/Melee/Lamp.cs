@@ -2,7 +2,7 @@ using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
-namespace WeaponWard.Items
+namespace WeaponWard.Content.Items.Melee
 {
 	public class Lamp : ModItem
 	{
