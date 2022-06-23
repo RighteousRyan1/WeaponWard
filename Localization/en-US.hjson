@@ -1,0 +1,15 @@
+﻿Mods: {
+    WeaponWard: {
+        ItemName: {
+            # BEGIN MELEE ITEMS
+            Lamp: "Lamp"
+            # END MELEE ITEMS
+        }
+        
+        ItemTooltip: {
+            # BEGIN MELEE ITEMS
+            Lamp: "'Light up your house'"
+            # END MELEE ITEMS
+        }
+    }
+}

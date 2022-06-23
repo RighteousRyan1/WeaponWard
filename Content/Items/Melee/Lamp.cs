@@ -1,10 +1,11 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WeaponWard.Core.Abstractions.Content;
 
 namespace WeaponWard.Content.Items.Melee
 {
-	public class Lamp : ModItem
+	public class Lamp : WardItem
 	{
 		public override void SetStaticDefaults()
 		{
