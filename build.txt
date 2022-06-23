@@ -1,0 +1,3 @@
+displayName = Weapon Ward
+author = RighteousRyan & Tomat
+version = 0.1
