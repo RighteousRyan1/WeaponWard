@@ -1,18 +1,15 @@
-using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Terraria;
-using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WeaponWard.Content.Components.Items;
 using WeaponWard.Core.Abstractions.Content;
-using WeaponWard.Core.Utilities;
 
 namespace WeaponWard.Content.Items.Melee
 {
-	public class Lamp : WardItem, IDrawableHeldItem
+	public class Lamp : WardItem
 	{
-		public override IWardItem.WardItemType ItemType => IWardItem.WardItemType.Adapted;
+		public override WardItemType ItemType => WardItemType.Adapted;
+		
 		public override string ItemAsylumWikiLink => "https://itemasylum.fandom.com/wiki/Lamp";
 
         public override void SetDefaults() {
@@ -22,10 +19,10 @@ namespace WeaponWard.Content.Items.Melee
 			Item.height = 40;
 			Item.useTime = 20;
 			Item.useAnimation = 20;
-			Item.useStyle = 1;
+			Item.useStyle = ItemUseStyleID.Swing;
 			Item.knockBack = 6;
 			Item.value = 10000;
-			Item.rare = 2;
+			Item.rare = ItemRarityID.Green;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
 		}
@@ -38,7 +35,7 @@ namespace WeaponWard.Content.Items.Melee
 			recipe.Register();
 		}
 
-		#region IDrawableHeldItem
+		/*#region IDrawableHeldItem
 
 		public IDrawableHeldItem.HeldItemDrawData DrawData { get; set; }
 		
@@ -66,6 +63,6 @@ namespace WeaponWard.Content.Items.Melee
 			);
 		}
 
-		#endregion
+		#endregion*/
 	}
 }

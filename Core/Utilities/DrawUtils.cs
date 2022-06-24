@@ -8,7 +8,7 @@ namespace WeaponWard.Core.Utilities
 {
     public static class DrawUtils
     {
-        public static SpriteEffects SpriteEffectsFromDirection(int direction) {
+        /*public static SpriteEffects SpriteEffectsFromDirection(int direction) {
             return direction == -1 ? SpriteEffects.FlipHorizontally : SpriteEffects.None;
         }
 
@@ -39,6 +39,6 @@ namespace WeaponWard.Core.Utilities
                 spriteEffects,
                 0f
             );
-        }
+        }*/
     }
 }

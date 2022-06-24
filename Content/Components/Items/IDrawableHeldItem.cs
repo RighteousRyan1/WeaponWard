@@ -1,14 +1,9 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
-using Terraria;
-using Terraria.DataStructures;
-
-namespace WeaponWard.Content.Components.Items
+﻿namespace WeaponWard.Content.Components.Items
 {
     // Some parts adapted from Ariame's code he sent me in Empyrea.
     public interface IDrawableHeldItem
     {
-        public struct HeldItemDrawData
+        /*public struct HeldItemDrawData
         {
             public readonly Vector2 Position;
             public readonly float Rotation;
@@ -38,6 +33,12 @@ namespace WeaponWard.Content.Components.Items
 
         void DrawHeldItem(SpriteBatch spriteBatch, Texture2D texture, Color color, SpriteEffects spriteEffects);
 
-        void DrawLayer(SpriteBatch spriteBatch, HeldItemDrawLayer.HeldItemContext context);
+        void DrawLayer(SpriteBatch spriteBatch, HeldItemDrawLayer.HeldItemContext context);*/
+
+        bool? PreRegisterHeldItem();
+
+        void RegisterHeldItem();
+
+        void PostRegisterHeldItem();
     }
 }
