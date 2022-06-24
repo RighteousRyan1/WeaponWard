@@ -1,17 +1,20 @@
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WeaponWard.Content.Components.Items;
 using WeaponWard.Core.Abstractions.Content;
+using WeaponWard.Core.Utilities;
 
 namespace WeaponWard.Content.Items.Melee
 {
-	public class Lamp : WardItem
+	public class Lamp : WardItem, IDrawableHeldItem
 	{
 		public override IWardItem.WardItemType ItemType => IWardItem.WardItemType.Adapted;
-		
-		public override void SetDefaults()
-		{
+
+		public override void SetDefaults() {
 			Item.damage = 50;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
@@ -24,6 +27,7 @@ namespace WeaponWard.Content.Items.Melee
 			Item.rare = 2;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
+			Item.noUseGraphic = true;
 		}
 
 		public override void AddRecipes()
@@ -33,5 +37,31 @@ namespace WeaponWard.Content.Items.Melee
 			recipe.AddTile(TileID.WorkBenches);
 			recipe.Register();
 		}
+
+		#region IDrawableHeldItem
+
+		public IDrawableHeldItem.HeldItemDrawData DrawData { get; set; }
+		
+		public Rectangle GetSourceRect(Texture2D texture) {
+			return texture.MakeSourceRect();
+		}
+
+		public void DrawHeldItem(SpriteBatch spriteBatch, Texture2D texture, Color color, SpriteEffects spriteEffects) {
+			this.DrawAtItem(spriteBatch, texture, color, spriteEffects);
+		}
+
+		public void DrawLayer(SpriteBatch spriteBatch, PlayerDrawSet playerDrawSet) {
+			Player player = playerDrawSet.drawPlayer;
+			DrawData = new IDrawableHeldItem.HeldItemDrawData(player.itemLocation, player.itemRotation, player.gfxOffY, player.direction);
+			
+			DrawHeldItem(
+				Main.spriteBatch,
+				ModContent.Request<Texture2D>(Texture).Value,
+				Main.DiscoColor,
+				DrawUtils.SpriteEffectsFromDirection(DrawData.Direction)
+			);
+		}
+
+		#endregion
 	}
 }
