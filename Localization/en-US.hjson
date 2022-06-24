@@ -11,5 +11,12 @@
             Lamp: "'Light up your house'"
             # END MELEE ITEMS
         }
+        
+        OriginalityTooltip: {
+            # Item ID 75 corresponds to the Fallen Star item.
+            Original: "[i:75] This item does not come from Item Asylum."
+            Unoriginal: "[i:75] This item comes from Item Asylum but is heavily modified."
+            Adapted: "[i:75] This item comes from Item Asylum."
+        }
     }
 }

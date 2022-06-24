@@ -1,18 +1,15 @@
 using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
+using WeaponWard.Content.Components.Items;
 using WeaponWard.Core.Abstractions.Content;
 
 namespace WeaponWard.Content.Items.Melee
 {
 	public class Lamp : WardItem
 	{
-		public override void SetStaticDefaults()
-		{
-			// DisplayName.SetDefault("Lamp"); // By default, capitalization in classnames will add spaces to the display name. You can customize the display name here by uncommenting this line.
-			Tooltip.SetDefault("This is a basic modded sword.");
-		}
-
+		public override IWardItem.WardItemType ItemType => IWardItem.WardItemType.Adapted;
+		
 		public override void SetDefaults()
 		{
 			Item.damage = 50;
