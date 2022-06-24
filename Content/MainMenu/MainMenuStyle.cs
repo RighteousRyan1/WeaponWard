@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Terraria.ModLoader;
 
 namespace WeaponWard.Content.MainMenu
 {
@@ -16,13 +17,16 @@ namespace WeaponWard.Content.MainMenu
         public string MusicPath { get; init; }
         // override the texture if necessary, if null, don't replace it
         public string LogoTexturePath { get; init; }
+        public string TextureUsed { get; init; }
+        public Action<ModMenu> Act { get; init; } = null;
 
-        public MainMenuStyle(string name, bool tiled, string musicPath, string logoTexturePath)
+        public MainMenuStyle(string name, bool tiled, string textureUsed, string musicPath, string logoTexturePath)
         {
             Name = name;
             MusicPath = musicPath;
             LogoTexturePath = logoTexturePath;
             IsTiled = tiled;
+            TextureUsed = textureUsed;
         }
     }
 }
