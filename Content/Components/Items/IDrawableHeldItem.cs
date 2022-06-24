@@ -38,6 +38,6 @@ namespace WeaponWard.Content.Components.Items
 
         void DrawHeldItem(SpriteBatch spriteBatch, Texture2D texture, Color color, SpriteEffects spriteEffects);
 
-        void DrawLayer(SpriteBatch spriteBatch, PlayerDrawSet playerDrawSet);
+        void DrawLayer(SpriteBatch spriteBatch, HeldItemDrawLayer.HeldItemContext context);
     }
 }

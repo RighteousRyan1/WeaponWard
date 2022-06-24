@@ -30,7 +30,7 @@ namespace WeaponWard.Core.Utilities
 
             spriteBatch.Draw(
                 texture,
-                item.DrawData.Position - Main.screenPosition + new Vector2(0, -item.DrawData.YOffset),
+                item.DrawData.Position - Main.screenPosition + new Vector2(0, item.DrawData.YOffset),
                 null,
                 color,
                 item.DrawData.Rotation,

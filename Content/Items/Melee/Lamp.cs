@@ -27,7 +27,6 @@ namespace WeaponWard.Content.Items.Melee
 			Item.rare = 2;
 			Item.UseSound = SoundID.Item1;
 			Item.autoReuse = true;
-			Item.noUseGraphic = true;
 		}
 
 		public override void AddRecipes()
@@ -50,8 +49,12 @@ namespace WeaponWard.Content.Items.Melee
 			this.DrawAtItem(spriteBatch, texture, color, spriteEffects);
 		}
 
-		public void DrawLayer(SpriteBatch spriteBatch, PlayerDrawSet playerDrawSet) {
-			Player player = playerDrawSet.drawPlayer;
+		public void DrawLayer(SpriteBatch spriteBatch, HeldItemDrawLayer.HeldItemContext context) {
+			if (!context.DrawingDisabled || context.DrawSet.drawPlayer.itemAnimation <= 0) return;
+			
+			Main.NewText(context.DrawSet.drawPlayer.itemAnimation);
+			
+			Player player = context.DrawSet.drawPlayer;
 			DrawData = new IDrawableHeldItem.HeldItemDrawData(player.itemLocation, player.itemRotation, player.gfxOffY, player.direction);
 			
 			DrawHeldItem(
