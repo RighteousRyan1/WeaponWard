@@ -34,7 +34,7 @@ namespace WeaponWard.Content.Globals.Items
             if (wardItem.ItemAsylumWikiLink is not null)
             {
                 TooltipLine line2 = ProvideLinkLine(Mod);
-                int index2 = tooltips.FindIndex(x => x.Name == "WeaponWard:WardOriginalityType");
+                int index2 = tooltips.FindIndex(x => x.Name == "WardOriginalityType" && x.Mod == "WeaponWard");
 
                 if (index1 == -1)
                     tooltips.Add(line2);
@@ -65,14 +65,14 @@ namespace WeaponWard.Content.Globals.Items
 
         private static TooltipLine MakeOriginalityLine(Mod mod, IWardItem.WardItemType itemType)
         {
-            return new TooltipLine(mod, "WeaponWard:WardOriginalityType", Language.GetTextValue($"Mods.WeaponWard.OriginalityTooltip.{itemType}"))
+            return new TooltipLine(mod, "WardOriginalityType", Language.GetTextValue($"Mods.WeaponWard.OriginalityTooltip.{itemType}"))
             {
                 OverrideColor = Color.LightGoldenrodYellow
             };
         }
         private static TooltipLine ProvideLinkLine(Mod mod)
         {
-            return new TooltipLine(mod, "WeaponWard:ItemAsylumLink", Language.GetTextValue($"Mods.WeaponWard.ItemLink.LinkText"))
+            return new TooltipLine(mod, "ItemAsylumLink", Language.GetTextValue($"Mods.WeaponWard.ItemLink.LinkText"))
             {
                 OverrideColor = Color.DarkGray
             };
