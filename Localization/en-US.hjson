@@ -18,5 +18,8 @@
             Unoriginal: "[i:75] This item comes from Item Asylum but is heavily modified."
             Adapted: "[i:75] This item comes from Item Asylum."
         }
+        ItemLink: {
+            LinkText: "RightAlt to view this item on the Item Asylum Wiki."
+        }
     }
 }

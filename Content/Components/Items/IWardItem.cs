@@ -30,5 +30,7 @@
         ///     This content's item originality type.
         /// </summary>
         WardItemType ItemType { get; }
+
+        string ItemAsylumWikiLink { get; }
     }
 }

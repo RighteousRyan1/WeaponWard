@@ -13,8 +13,9 @@ namespace WeaponWard.Content.Items.Melee
 	public class Lamp : WardItem, IDrawableHeldItem
 	{
 		public override IWardItem.WardItemType ItemType => IWardItem.WardItemType.Adapted;
+		public override string ItemAsylumWikiLink => "https://itemasylum.fandom.com/wiki/Lamp";
 
-		public override void SetDefaults() {
+        public override void SetDefaults() {
 			Item.damage = 50;
 			Item.DamageType = DamageClass.Melee;
 			Item.width = 40;
