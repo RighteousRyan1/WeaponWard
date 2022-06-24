@@ -9,5 +9,6 @@ namespace WeaponWard.Core.Abstractions.Content
     public abstract class WardItem : ModItem, IWardContent, IWardItem
     {
         public abstract IWardItem.WardItemType ItemType { get; }
+        public abstract string ItemAsylumWikiLink { get; }
     }
 }

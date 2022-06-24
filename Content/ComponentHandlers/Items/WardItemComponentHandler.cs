@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Terraria;
 using Terraria.Localization;
 using Terraria.ModLoader;
 using WeaponWard.Content.Components.Items;
 using WeaponWard.Core.Abstractions.Content;
+using WeaponWard.Core.Utilities;
 
 namespace WeaponWard.Content.Globals.Items
 {
@@ -20,20 +23,58 @@ namespace WeaponWard.Content.Globals.Items
             if (item.ModItem is not IWardItem wardItem)
                 return;
 
-            TooltipLine line = MakeOriginalityLine(Mod, wardItem.ItemType);
-            int index = tooltips.FindIndex(x => x.Name == "JourneyResearch" && x.Mod == "Terraria");
+            TooltipLine line1 = MakeOriginalityLine(Mod, wardItem.ItemType);
+            int index1 = tooltips.FindIndex(x => x.Name == "JourneyResearch" && x.Mod == "Terraria");
             
-            if (index == -1)
-                tooltips.Add(line);
+            if (index1 == -1)
+                tooltips.Add(line1);
             else
-                tooltips.Insert(index, line);
+                tooltips.Insert(index1, line1);
+
+            if (wardItem.ItemAsylumWikiLink is not null)
+            {
+                TooltipLine line2 = ProvideLinkLine(Mod);
+                int index2 = tooltips.FindIndex(x => x.Name == "WeaponWard:WardOriginalityType");
+
+                if (index1 == -1)
+                    tooltips.Add(line2);
+                else
+                    tooltips.Insert(index2, line2);
+            }
+        }
+        public override void UpdateInventory(Item item, Player player)
+        {
+            if (item.ModItem is not IWardItem wardItem)
+                return;
+
+            if (wardItem.ItemAsylumWikiLink is not null)
+            {
+                if (Main.HoverItem.ModItem is not null)
+                {
+                    if (Main.HoverItem.ModItem is IWardItem)
+                    {
+                        if (KeyUtils.KeyJustPressed(Keys.RightAlt))
+                            Process.Start(new ProcessStartInfo(wardItem.ItemAsylumWikiLink)
+                            {
+                                UseShellExecute = true,
+                            });
+                    }
+                }
+            }
         }
 
         private static TooltipLine MakeOriginalityLine(Mod mod, IWardItem.WardItemType itemType)
         {
-            return new TooltipLine(mod, "WardOriginalityType", Language.GetTextValue($"Mods.WeaponWard.OriginalityTooltip.{itemType}"))
+            return new TooltipLine(mod, "WeaponWard:WardOriginalityType", Language.GetTextValue($"Mods.WeaponWard.OriginalityTooltip.{itemType}"))
             {
                 OverrideColor = Color.LightGoldenrodYellow
+            };
+        }
+        private static TooltipLine ProvideLinkLine(Mod mod)
+        {
+            return new TooltipLine(mod, "WeaponWard:ItemAsylumLink", Language.GetTextValue($"Mods.WeaponWard.ItemLink.LinkText"))
+            {
+                OverrideColor = Color.DarkGray
             };
         }
     }
