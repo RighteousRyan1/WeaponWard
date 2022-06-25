@@ -9,7 +9,7 @@ using WeaponWard.Content.Components.Items;
 using WeaponWard.Core.Abstractions.Content;
 using WeaponWard.Core.Utilities;
 
-namespace WeaponWard.Content.Globals.Items
+namespace WeaponWard.Content.ComponentHandlers.Items
 {
     /// <summary>
     ///     Handles items implementing the <see cref="IWardItem"/> component.
@@ -63,7 +63,7 @@ namespace WeaponWard.Content.Globals.Items
             }
         }
 
-        private static TooltipLine MakeOriginalityLine(Mod mod, IWardItem.WardItemType itemType)
+        private static TooltipLine MakeOriginalityLine(Mod mod, WardItemType itemType)
         {
             return new TooltipLine(mod, "WardOriginalityType", Language.GetTextValue($"Mods.WeaponWard.OriginalityTooltip.{itemType}"))
             {
