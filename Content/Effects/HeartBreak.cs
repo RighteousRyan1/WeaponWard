@@ -66,8 +66,7 @@ namespace WeaponWard.Content.Effects
             {
                 Vector2 velocity = Vector2.UnitY.RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi));
                 float magnitude = 3.5f;
-                var gore = Gore.NewGoreDirect(new HeartSource(), Position, velocity * magnitude, ModContent.GoreType<HeartShard>(), ShardScale);
-                // TODO: still is not red
+                var dust = Dust.NewDustDirect(Position, 1, 1, ModContent.DustType<HeartShard>(), velocity.X * magnitude, velocity.Y * magnitude, 0, Color, ShardScale);
             }
             SoundEngine.PlaySound(BreakSound, Position);
         }

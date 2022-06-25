@@ -12,11 +12,11 @@ using Terraria.ModLoader;
 
 namespace WeaponWard.Content.Dusts
 {
-    public class HeartShard : ModGore
+    public class HeartShard : ModDust
     {
         public override string Texture => $"{nameof(WeaponWard)}/Assets/Textures/undertale_heart_shard";
 
-        public override bool Update(Gore gore)
+        public override bool Update(Dust gore)
         {
             // maybe something here?
             return base.Update(gore);
