@@ -15,11 +15,6 @@ namespace WeaponWard.Content.ComponentHandlers.Items
         {
             public HeldItemMixin(ILCursor cursor) : base(cursor) { }
 
-            public override void ReplaceCallvirts<TDelegate>(string typeFullName, string name, TDelegate @delegate) {
-                _ = 0;
-                base.ReplaceCallvirts(typeFullName, name, @delegate);
-            }
-
             protected override void ReplaceCall<TDelegate>(TDelegate @delegate) {
                 // Remove original call(virt) from stack.
                 Cursor.Remove();
