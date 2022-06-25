@@ -36,6 +36,7 @@ namespace WeaponWard.Content.ComponentHandlers.Items
         private delegate void DataCacheDelegateA(List<DrawData> drawDataCache, DrawData drawData);
 
         public void Load(Mod mod) {
+            // TODO: Determine if delegation here is necessary. I was having debugging issues earlier but I do not know if this is the thing that fixed them.
             Main.QueueMainThreadAction(() =>
             {
                 IL.Terraria.DataStructures.PlayerDrawLayers.DrawPlayer_27_HeldItem += CacheManipulator;
