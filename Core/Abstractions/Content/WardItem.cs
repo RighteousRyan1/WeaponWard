@@ -1,13 +1,19 @@
-﻿using System;
+﻿using Terraria.DataStructures;
 using Terraria.ModLoader;
 using WeaponWard.Content.Components.Items;
 
 namespace WeaponWard.Core.Abstractions.Content
 {
     /// <summary>
-    ///     Base abstract class for Weapon Ward <see cref="ModItem"/>s, implements <see cref="IWardContent"/>.
+    ///     Base abstract class for Weapon Ward <see cref="ModItem"/>s.
     /// </summary>
-    public abstract class WardItem : ModItem, IWardContent, IWardItem, IDrawableHeldItem
+    /// <remarks>
+    ///     Implements: <br />
+    ///     - <see cref="IWardContent"/> <br />
+    ///     - <see cref="IWardItem"/> <br />
+    ///     - <see cref="IHeldItemDrawDataCacheable"/> <br />
+    /// </remarks>
+    public abstract class WardItem : ModItem, IWardContent, IWardItem, IHeldItemDrawDataCacheable
     {
         #region IWardItem Impl
 
@@ -19,14 +25,11 @@ namespace WeaponWard.Core.Abstractions.Content
 
         #region IDrawableHeldItem Impl
 
-        public virtual bool? PreRegisterHeldItem() {
-            return null;
+        public virtual bool PreCacheDrawData(ref PlayerDrawSet drawInfo, ref DrawData drawData) {
+            return true;
         }
 
-        public virtual void RegisterHeldItem() {
-        }
-
-        public virtual void PostRegisterHeldItem() {
+        public virtual void PostCacheDrawData(PlayerDrawSet drawInfo, DrawData drawData) {
         }
 
         #endregion

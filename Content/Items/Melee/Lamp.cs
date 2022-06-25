@@ -1,4 +1,6 @@
+using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.DataStructures;
 using Terraria.ID;
 using Terraria.ModLoader;
 using WeaponWard.Content.Components.Items;
@@ -35,34 +37,16 @@ namespace WeaponWard.Content.Items.Melee
 			recipe.Register();
 		}
 
-		/*#region IDrawableHeldItem
-
-		public IDrawableHeldItem.HeldItemDrawData DrawData { get; set; }
-		
-		public Rectangle GetSourceRect(Texture2D texture) {
-			return texture.MakeSourceRect();
+		public override bool PreCacheDrawData(ref PlayerDrawSet drawInfo, ref DrawData drawData) {
+			return false;
 		}
 
-		public void DrawHeldItem(SpriteBatch spriteBatch, Texture2D texture, Color color, SpriteEffects spriteEffects) {
-			this.DrawAtItem(spriteBatch, texture, color, spriteEffects);
-		}
+		public override void PostCacheDrawData(PlayerDrawSet drawInfo, DrawData drawData) {
+			base.PostCacheDrawData(drawInfo, drawData);
 
-		public void DrawLayer(SpriteBatch spriteBatch, HeldItemDrawLayer.HeldItemContext context) {
-			if (!context.DrawingDisabled || context.DrawSet.drawPlayer.itemAnimation <= 0) return;
-			
-			Main.NewText(context.DrawSet.drawPlayer.itemAnimation);
-			
-			Player player = context.DrawSet.drawPlayer;
-			DrawData = new IDrawableHeldItem.HeldItemDrawData(player.itemLocation, player.itemRotation, player.gfxOffY, player.direction);
-			
-			DrawHeldItem(
-				Main.spriteBatch,
-				ModContent.Request<Texture2D>(Texture).Value,
-				Main.DiscoColor,
-				DrawUtils.SpriteEffectsFromDirection(DrawData.Direction)
-			);
+			drawData.color = Main.DiscoColor;
+			drawData.texture = ModContent.Request<Texture2D>(Texture).Value;
+			drawInfo.DrawDataCache.Add(drawData);
 		}
-
-		#endregion*/
 	}
 }
