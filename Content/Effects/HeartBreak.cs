@@ -28,6 +28,7 @@ namespace WeaponWard.Content.Effects
         public readonly int TicksBeforeCrack;
         public readonly int TicksBeforeBreak;
 
+        public float HeartScale = 1f;
         public float ShardScale = 1f;
 
         public Vector2 Position;
@@ -82,7 +83,7 @@ namespace WeaponWard.Content.Effects
 
 
             if (!Broken)
-                spriteBatch.Draw(_textureToUse, Position - Main.screenPosition, null, Color, 0f, _textureToUse.Size() / 2, 1f, default, 0f);
+                spriteBatch.Draw(_textureToUse, Position - Main.screenPosition, null, Color, 0f, _textureToUse.Size() / 2, HeartScale, default, 0f);
         }
     }
     public class HeartSource : IEntitySource
