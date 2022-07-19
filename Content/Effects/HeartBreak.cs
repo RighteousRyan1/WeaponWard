@@ -67,7 +67,7 @@ namespace WeaponWard.Content.Effects
             {
                 Vector2 velocity = Vector2.UnitY.RotatedBy(Main.rand.NextFloat(MathHelper.TwoPi));
                 float magnitude = 3.5f;
-                var dust = Dust.NewDustDirect(Position, 1, 1, ModContent.DustType<HeartShard>(), velocity.X * magnitude, velocity.Y * magnitude, 0, Color, ShardScale);
+                Dust.NewDustDirect(Position, 1, 1, ModContent.DustType<HeartShard>(), velocity.X * magnitude, velocity.Y * magnitude, 0, Color, ShardScale);
             }
             SoundEngine.PlaySound(BreakSound, Position);
         }
@@ -80,7 +80,6 @@ namespace WeaponWard.Content.Effects
                 Crack();
             if (TicksExisted == TicksBeforeBreak)
                 Break();
-
 
             if (!Broken)
                 spriteBatch.Draw(_textureToUse, Position - Main.screenPosition, null, Color, 0f, _textureToUse.Size() / 2, HeartScale, default, 0f);

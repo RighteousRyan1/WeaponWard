@@ -11,7 +11,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace WeaponWard.Content.Systems
 {
-    public class UpdatingSystem : ModSystem
+    public class UndertaleHeartUpdateSystem : ModSystem
     {
         public override void PostDrawTiles()
         {
