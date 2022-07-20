@@ -53,11 +53,12 @@ namespace WeaponWard.Content.ComponentHandlers.Items
                 {
                     if (Main.HoverItem.ModItem is IWardItem)
                     {
-                        if (KeyUtils.KeyJustPressed(Keys.RightAlt))
-                            Process.Start(new ProcessStartInfo(wardItem.ItemAsylumWikiLink)
-                            {
-                                UseShellExecute = true,
-                            });
+                        if (Main.HoverItem.type == item.type)
+                            if (KeyUtils.KeyJustPressed(Keys.RightAlt))
+                                Process.Start(new ProcessStartInfo(wardItem.ItemAsylumWikiLink)
+                                {
+                                    UseShellExecute = true,
+                                });
                     }
                 }
             }
