@@ -8,6 +8,7 @@ using Terraria;
 using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.ModLoader;
+using WeaponWard.Core.Utilities;
 
 namespace WeaponWard.Content.Players
 {
@@ -16,17 +17,8 @@ namespace WeaponWard.Content.Players
         public static Dictionary<string, SoundStyle> DeathStyles;
         public static void Initialize(Mod mod)
         {
-            DeathStyles = new();
-            // grab all files inside of the directory
-            var files = mod.GetFileNames();
-            var deathSounds = files.Where(f => f.Contains("Assets") && f.Contains("Sounds") && f.Contains("DeathSounds"));
-
-            foreach (var path in deathSounds)
-            {
-                var noExtension = Path.GetFileNameWithoutExtension(path);
-                var filePathNoExtension = path.Replace(Path.GetExtension(path), string.Empty);
-                DeathStyles.Add($"{noExtension}", new($"{mod.Name}/{filePathNoExtension}"));
-            }
+            // that was easy.
+            DeathStyles = FolderLoadingUtils.LoadSoundStylesFromFolder(mod, "Assets", "Sounds", "DeathSounds");
         }
     }
     public class DeathSoundPlayer : ModPlayer
